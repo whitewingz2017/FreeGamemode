@@ -414,16 +414,16 @@ function GetPedHeadBlendData()
     end
 
     return {
-        shapeFirst = string.unpack("<i4", blob, 1),
-        shapeSecond = string.unpack("<i4", blob, 9),
-        shapeThird = string.unpack("<i4", blob, 17),
-        skinFirst = string.unpack("<i4", blob, 25),
-        skinSecond = string.unpack("<i4", blob, 33),
-        skinThird = string.unpack("<i4", blob, 41),
-        shapeMix = string.unpack("<f", blob, 49),
-        skinMix = string.unpack("<f", blob, 57),
-        thirdMix = string.unpack("<f", blob, 65),
-        hasParent = string.unpack("b", blob, 73) ~= 0,
+        s1 = string.unpack("<i4", blob, 1),
+        s2 = string.unpack("<i4", blob, 9),
+        s3 = string.unpack("<i4", blob, 17),
+        s4 = string.unpack("<i4", blob, 25),
+        s5 = string.unpack("<i4", blob, 33),
+        s6 = string.unpack("<i4", blob, 41),
+        s7 = string.unpack("<f", blob, 49),
+        s8 = string.unpack("<f", blob, 57),
+        s9 = string.unpack("<f", blob, 65),
+        s10 = string.unpack("b", blob, 73) ~= 0,
     }
 end
 
@@ -435,11 +435,10 @@ function GetHeadOverlayData()
         if retval then
             headData[i] = {}
             headData[i].name = cAPI.getHeadOverlays()[i]
-            headData[i].overlayValue = overlayValue
-            headData[i].colourType = colourType
-            headData[i].firstColour = firstColour
-            headData[i].secondColour = secondColour
-            headData[i].overlayOpacity = overlayOpacity
+            headData[i].ov = overlayValue --
+            headData[i].fc = firstColour -- 
+            headData[i].sc = secondColour --
+            headData[i].oo = string.format("%.2f", overlayOpacity) --
         end
     end
     return headData

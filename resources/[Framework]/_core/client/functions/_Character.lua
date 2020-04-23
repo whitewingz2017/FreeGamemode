@@ -17,15 +17,15 @@ end
 function cAPI.SetPedHeadBlend(data)
 	local player = PlayerPedId()
     SetPedHeadBlendData(player,
-        tonumber(data['shapeFirst']),
-        tonumber(data['shapeSecond']),
-        tonumber(data['shapeThird']),
-        tonumber(data['skinFirst']),
-        tonumber(data['skinSecond']),
-        tonumber(data['skinThird']),
-        tonumber(data['shapeMix']),
-        tonumber(data['skinMix']),
-        tonumber(data['thirdMix']),
+        tonumber(data['s1']),
+        tonumber(data['s2']),
+        tonumber(data['s3']),
+        tonumber(data['s4']),
+        tonumber(data['s5']),
+        tonumber(data['s6']),
+        tonumber(data['s7']),
+        tonumber(data['s8']),
+        tonumber(data['s9']),
         false)
 end
 
@@ -33,22 +33,22 @@ function cAPI.SetHeadOverlayData(data)
 	local player = PlayerPedId()
     if json.encode(data) ~= "[]" then
         for i = 1, #cAPI.head_overlays do
-            SetPedHeadOverlay(player,  i-1, tonumber(data[i].overlayValue),  tonumber(data[i].overlayOpacity))
+            SetPedHeadOverlay(player,  i-1, tonumber(data[i].ov),  tonumber(data[i].oo))
             -- SetPedHeadOverlayColor(player, i-1, data[i].colourType, data[i].firstColour, data[i].secondColour)
         end
 
-        SetPedHeadOverlayColor(player, 0, 0, tonumber(data[1].firstColour), tonumber(data[1].secondColour))
-        SetPedHeadOverlayColor(player, 1, 1, tonumber(data[2].firstColour), tonumber(data[2].secondColour))
-        SetPedHeadOverlayColor(player, 2, 1, tonumber(data[3].firstColour), tonumber(data[3].secondColour))
-        SetPedHeadOverlayColor(player, 3, 0, tonumber(data[4].firstColour), tonumber(data[4].secondColour))
-        SetPedHeadOverlayColor(player, 4, 2, tonumber(data[5].firstColour), tonumber(data[5].secondColour))
-        SetPedHeadOverlayColor(player, 5, 2, tonumber(data[6].firstColour), tonumber(data[6].secondColour))
-        SetPedHeadOverlayColor(player, 6, 0, tonumber(data[7].firstColour), tonumber(data[7].secondColour))
-        SetPedHeadOverlayColor(player, 7, 0, tonumber(data[8].firstColour), tonumber(data[8].secondColour))
-        SetPedHeadOverlayColor(player, 8, 2, tonumber(data[9].firstColour), tonumber(data[9].secondColour))
-        SetPedHeadOverlayColor(player, 9, 0, tonumber(data[10].firstColour), tonumber(data[10].secondColour))
-        SetPedHeadOverlayColor(player, 10, 1, tonumber(data[11].firstColour), tonumber(data[11].secondColour))
-        SetPedHeadOverlayColor(player, 11, 0, tonumber(data[12].firstColour), tonumber(data[12].secondColour))
+        SetPedHeadOverlayColor(player, 0, 0, tonumber(data[1].fc), tonumber(data[1].sc))
+        SetPedHeadOverlayColor(player, 1, 1, tonumber(data[2].fc), tonumber(data[2].sc))
+        SetPedHeadOverlayColor(player, 2, 1, tonumber(data[3].fc), tonumber(data[3].sc))
+        SetPedHeadOverlayColor(player, 3, 0, tonumber(data[4].fc), tonumber(data[4].sc))
+        SetPedHeadOverlayColor(player, 4, 2, tonumber(data[5].fc), tonumber(data[5].sc))
+        SetPedHeadOverlayColor(player, 5, 2, tonumber(data[6].fc), tonumber(data[6].sc))
+        SetPedHeadOverlayColor(player, 6, 0, tonumber(data[7].fc), tonumber(data[7].sc))
+        SetPedHeadOverlayColor(player, 7, 0, tonumber(data[8].fc), tonumber(data[8].sc))
+        SetPedHeadOverlayColor(player, 8, 2, tonumber(data[9].fc), tonumber(data[9].sc))
+        SetPedHeadOverlayColor(player, 9, 0, tonumber(data[10].fc), tonumber(data[10].sc))
+        SetPedHeadOverlayColor(player, 10, 1, tonumber(data[11].fc), tonumber(data[11].sc))
+        SetPedHeadOverlayColor(player, 11, 0, tonumber(data[12].fc), tonumber(data[12].sc))
     end
 end
 
