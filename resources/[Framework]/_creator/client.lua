@@ -1,21 +1,11 @@
--- Esse creator foi criado pelo crazy, a source não será liberada, apenas a html pronta.
--- Ideia da UI: https://www.youtube.com/watch?v=rv8KqlKbwqQ&vl=en
 local Tunnel = module('_core', 'libs/Tunnel')
 local Proxy = module('_core', 'libs/Proxy')
 
 cAPI = Proxy.getInterface('API')
 API = Tunnel.getInterface('API')
 
-local drawable_names = {"face", "masks", "hair", "torsos", "legs", "bags", "shoes", "neck", "undershirts", "vest", "decals", "jackets"}
-local head_overlays = {"bl","fch","eyebrownhead","ageing","Makeup","Blush","Complexion","SunDamage","Lipstick","moles","chesthair","bodybl","addbodybl"}
-local face_features = {"nosew","peaknose","lengthnose","nosehigh","noselowering","nosetwist","eyebrow","eyebrow2","cheeck1","cheeck2","cheeck3","eye1","lip1","jaw1","jaw2","chimp1","chimp2","chimp3","chimp4","neck"}
-
-initialPosition = {
-    x=152.19165039063,  
-    y=-1001.4165039063,
-    z=-99.000015258789
-}
-charData = {}
+initialPosition = { x = 152.19 , y = -1001.41 , z = -99.00}
+spawnAfterCreation = {x = -1038.115234375,y = -2738.6081542969,z= 13.815234184265}
 
 cameraUsing = {
     {
@@ -138,12 +128,6 @@ cameraUsing = {
         y=-0.8,
         z=-0.7,
     },
-}
-
-spawnAfterCreation = {
-    x = -1038.115234375,
-    y = -2738.6081542969,
-    z= 13.815234184265,
 }
 
 RegisterNetEvent('CKF_creator:createCharacter')
@@ -338,6 +322,9 @@ function createCamera()
     DestroyCam(groundCam)
     SendNUIMessage({
         action = "showCreator",
+        menu1 = menu1, -- with i18n
+        menu2 = menu2, -- with i18n
+        menu3 = menu3, -- with i18n
     })
 end
 
@@ -443,11 +430,11 @@ end
 function GetHeadOverlayData()
     local player = PlayerPedId()
     local headData = {}
-    for i = 1, #head_overlays do
+    for i = 1, #cAPI.getHeadOverlays() do
         local retval, overlayValue, colourType, firstColour, secondColour, overlayOpacity = GetPedHeadOverlayData(player, i-1)
         if retval then
             headData[i] = {}
-            headData[i].name = head_overlays[i]
+            headData[i].name = cAPI.getHeadOverlays()[i]
             headData[i].overlayValue = overlayValue
             headData[i].colourType = colourType
             headData[i].firstColour = firstColour
@@ -469,8 +456,8 @@ end
 function GetHeadStructureData()
     local player = PlayerPedId()
     local structure = {}
-    for i = 1, #face_features do
-        structure[face_features[i]] = GetPedFaceFeature(player, i-1)
+    for i = 1, #cAPI.getFaceFeatures() do
+        structure[cAPI.getFaceFeatures()[i]] = GetPedFaceFeature(player, i-1)
     end
     return structure
 end
@@ -483,11 +470,11 @@ function GetDrawables()
     if (model == `mp_f_freemode_01` or model == `mp_m_freemode_01`) then
         mpPed = true
     end
-    for i = 0, #drawable_names-1 do
-        if mpPed and drawable_names[i+1] == "undershirts" and GetPedDrawableVariation(player, i) == -1 then
+    for i = 0, #cAPI.getDrawableNames()-1 do
+        if mpPed and cAPI.getDrawableNames()[i+1] == "undershirts" and GetPedDrawableVariation(player, i) == -1 then
             SetPedComponentVariation(player, i, 15, 0, 2)
         end
-        drawables[i] = {drawable_names[i+1], GetPedDrawableVariation(player, i)}
+        drawables[i] = {cAPI.getDrawableNames()[i+1], GetPedDrawableVariation(player, i)}
     end
     return drawables
 end
@@ -495,8 +482,8 @@ end
 function GetDrawTextures()
     local player = PlayerPedId()
     textures = {}
-    for i = 0, #drawable_names-1 do
-        table.insert(textures, {drawable_names[i+1], GetPedTextureVariation(player, i)})
+    for i = 0, #cAPI.getDrawableNames()-1 do
+        table.insert(textures, {cAPI.getDrawableNames()[i+1], GetPedTextureVariation(player, i)})
     end
     return textures
 end

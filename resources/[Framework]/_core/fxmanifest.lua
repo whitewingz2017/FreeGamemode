@@ -8,21 +8,29 @@ client_scripts {
 	'config/Items.lua',
 	'config/CraftableItems.lua', 
 	'config/Garages.lua',
+	'config/Weapons.lua',
+	'config/Language.lua',
 	---------------------
 	'client/_Main.lua',
-	'client/Death.lua',
-	'client/Basic_Needs.lua',
-	--'client/LoadIPL.lua',
+	---------------------
+	'client/functions/_Utils.lua',
+	'client/functions/_Camera.lua',
+	'client/functions/_Character.lua',
+	---------------------
+	--'client/game/_bNeeds.lua',
+	--'client/game/_onDeath.lua',
+	---------------------
+	--'client/mapping/_IPLoader.lua',
 }
 
 server_scripts {
 	'libs/utils.lua',
 	---------------------
+	'config/Language.lua',
 	'config/Items.lua',
 	'config/XPSystem.lua',
 	'config/Chests.lua',
 	'config/Permissions.lua',
-	'config/Language.lua',
 	---------------------
 	'server/Database.lua',
 	'server/_Main.lua',
@@ -38,11 +46,10 @@ server_scripts {
 	'server/class/ShopItem.lua',
 	'server/class/Posse.lua',
 	-----------------------
-	-- 'server/manager/ChestManager.lua',
 	'server/manager/ItemDataManager.lua',
 	'server/manager/CharacterManager.lua',
 	'server/manager/PosseManager.lua',
-	'server/manager/ChestManager.lua',
+	'server/manager/ChestManager.lua'
 }
 
 files {

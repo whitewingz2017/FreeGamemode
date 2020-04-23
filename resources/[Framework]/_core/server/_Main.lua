@@ -15,6 +15,9 @@ API.identifiers = {} -- key: identifier | value: user_id
 API.chars = {}
 
 API.onFirstSpawn = {}
+-- Setting language to API
+API.Language = Language
+API.GameLanguage = GameLanguage
 
 function API.getUserIdByIdentifiers(ids, name)
     local rows = API_Database.query("CKF_/SelectUser", {identifier = ids[1]})

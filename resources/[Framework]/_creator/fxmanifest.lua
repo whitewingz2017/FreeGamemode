@@ -14,7 +14,8 @@ files {
 
 client_scripts {
 	"@_core/libs/utils.lua",
-	"client.lua"
+	"menus.lua",
+	"client.lua",
 }
 
 server_scripts {

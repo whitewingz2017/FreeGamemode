@@ -26,25 +26,25 @@ AddEventHandler(
         local ids = GetPlayerIdentifiers(_source)
 
         if ids[1] == nil then
-            deferrals.done(Language[GameLanguage].NO_STEAM)
+            deferrals.done(API.Language[API.GameLanguage].NO_STEAM)
             CancelEvent()
             return
         end
 
         if LoginCooldown[ids[1]] == nil then
-            deferrals.update(Language[GameLanguage].CHECK_WHITELIST)
+            deferrals.update(API.Language[API.GameLanguage].CHECK_WHITELIST)
             if API.isWhitelisted(ids[1]) then
                 local user_id = API.getUserIdByIdentifiers(ids, playerName)
                 if user_id then
-                    deferrals.update(Language[GameLanguage].CHECK_BANLIST)
+                    deferrals.update(API.Language[API.GameLanguage].CHECK_BANLIST)
                     if API.isBanned(user_id) == 0 then
                         if API.users[user_id] == nil then
-                            deferrals.update(Language[GameLanguage].JOIN_PERMITTED)
+                            deferrals.update(API.Language[API.GameLanguage].JOIN_PERMITTED)
                             API.onFirstSpawn[user_id] = true
                             deferrals.done()
                         end
                     else
-                        deferrals.done(Language[GameLanguage].BANNED)
+                        deferrals.done(API.Language[API.GameLanguage].BANNED)
                         CancelEvent()
                     end
                 end
@@ -58,12 +58,12 @@ AddEventHandler(
                     end
                 )
 
-                print(playerName .. ' (' .. ids[1] .. ') ' .. Language[GameLanguage].NO_WHITELIST)
-                deferrals.done(Language[GameLanguage].DONT_PERMITTED ..' '.. ids[1])
+                print(playerName .. ' (' .. ids[1] .. ') ' .. API.Language[API.GameLanguage].NO_WHITELIST)
+                deferrals.done(API.Language[API.GameLanguage].DONT_PERMITTED ..' '.. ids[1])
                 CancelEvent()
             end
         else
-            deferrals.done(Language[GameLanguage].AUTO_QUEUEWL)
+            deferrals.done(API.Language[API.GameLanguage].AUTO_QUEUEWL)
         end
     end
 )
