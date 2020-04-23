@@ -56,7 +56,8 @@ function Inventory.showInventory(items) -- this functions is on show inventory N
     SetNuiFocusKeepInput(true)
     SendNUIMessage({
         action = "show_primary_inventory",
-        items = items
+        items = items,
+        language = cAPI.getUILanguage(GetCurrentResourceName())
     })     
 end
 

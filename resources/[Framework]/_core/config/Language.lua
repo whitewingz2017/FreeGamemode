@@ -129,6 +129,24 @@ UILanguage = {
                 ACESSORY = "Acessórios",
                 ACESSORY_TEXTURE = "Textura",
             }
+        },
+        ["_inventory"] = {
+            INVENTORY = "Inventário",
+            ALL_ITEMS = "Todos",
+            FOOD = "Comidas",
+            DRINKS = "Bebidas",
+            WEAPONS = "Armas",
+            AMMO = "Municao",
+            SHIRTS = "Camisas",
+            UTILS = "Utilitários",
+
+            VEHICLE = "Veículos",
+            IDENTITY = "Identidade",
+
+            QUANTITY = "Quantidade",
+            USE = "Usar",
+            SEND = "Enviar",
+            DROP = "Dropar"
         }
     }
 }
