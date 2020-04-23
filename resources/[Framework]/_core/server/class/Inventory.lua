@@ -43,7 +43,7 @@ function API.Inventory(id, capacity, items)
         return 0
     end
 
-    self.addItem = function(this, id, amount, forced)
+    self.addItem = function(this, id, amount)
         local ItemData = API.getItemDataFromId(id)
         if ItemData == nil then
             return false

@@ -229,6 +229,85 @@ RegisterCommand(
 )
 
 RegisterCommand(
+    "getmoney",
+    function(source, args, rawCommand)
+        local User = API.getUserFromSource(source)
+        local Character = User:getCharacter()
+        if args[1] and args[2] then 
+            if Character:hasGroupOrInheritance("admin") then
+                if args[1] == "user" then
+                    local tplayer = API.getUserFromUserId(parseInt(args[2]))
+                    if tplayer then
+                        local OtherCharacter = tplayer:getCharacter()
+                        User:notify(OtherCharacter:getName().." has " .. OtherCharacter:getMoney() .. "$")
+                    end
+                elseif args[1] == "char" then
+                    local tplayer = API.getUserFromCharId(parseInt(args[2]))
+                    if tplayer then
+                        local OtherCharacter = tplayer:getCharacter()
+                        User:notify(OtherCharacter:getName().." has " .. OtherCharacter:getMoney() .. "$")
+                    end
+                end
+            end
+        end
+    end
+)
+
+RegisterCommand(
+    "addmoney",
+    function(source, args, rawCommand)
+        local User = API.getUserFromSource(source)
+        local Character = User:getCharacter()
+        if args[1] and args[2] and parseInt(args[3]) > 1 then 
+            if Character:hasGroupOrInheritance("admin") then
+                if args[1] == "user" then
+                    local tplayer = API.getUserFromUserId(parseInt(args[2]))
+                    if tplayer then
+                        local OtherCharacter = tplayer:getCharacter()
+                        OtherCharacter:addMoney(args[3])
+                        User:notify("Added: " .. args[3] .. "$ to "..OtherCharacter:getName())
+                    end
+                elseif args[1] == "char" then
+                    local tplayer = API.getUserFromCharId(parseInt(args[2]))
+                    if tplayer then
+                        local OtherCharacter = tplayer:getCharacter()
+                        OtherCharacter:addMoney(args[3])
+                        User:notify("Added: " .. args[3] .. "$ to "..OtherCharacter:getName())
+                    end
+                end
+            end
+        end
+    end
+)
+
+RegisterCommand(
+    "removemoney",
+    function(source, args, rawCommand)
+        local User = API.getUserFromSource(source)
+        local Character = User:getCharacter()
+        if args[1] and args[2] and parseInt(args[3]) > 1 then 
+            if Character:hasGroupOrInheritance("admin") then
+                if args[1] == "user" then
+                    local tplayer = API.getUserFromUserId(parseInt(args[2]))
+                    if tplayer then
+                        local OtherCharacter = tplayer:getCharacter()
+                        OtherCharacter:removeMoney(args[3])
+                        User:notify("Removed: " .. args[3] .. "$ to "..OtherCharacter:getName())
+                    end
+                elseif args[1] == "char" then
+                    local tplayer = API.getUserFromCharId(parseInt(args[2]))
+                    if tplayer then
+                        local OtherCharacter = tplayer:getCharacter()
+                        OtherCharacter:removeMoney(args[3])
+                        User:notify("Removed: " .. args[3] .. "$ to "..OtherCharacter:getName())
+                    end
+                end
+            end
+        end
+    end
+)
+
+RegisterCommand(
     "group",
     function(source, args, rawCommand)
         local User = API.getUserFromSource(source)

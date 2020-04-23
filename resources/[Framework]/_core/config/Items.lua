@@ -6,23 +6,25 @@ ItemList = {
     -------------------------------
     ['weapon_carbinerifle_mk2'] = { -- ☆☆☆☆☆
         type = 'weapon',
-        -- name = 'Sig Sauer MPX-C',
         name = 'MPX-C',
+        subtitle = 'Rifle de Assalto',
         weight = 0.5
     },
     ['weapon_specialcarbine'] = { -- ☆☆☆☆
         type = 'weapon',
         name = 'H&K G36C',
+        subtitle = 'Rifle de Assalto',
         weight = 0.5
     },
     ['weapon_assaultrifle'] = { -- ☆☆☆
         type = 'weapon',
         name = 'AK-47',
+        subtitle = 'Rifle de Assalto',
         weight = 0.5
     },
     ['weapon_compactrifle'] = { -- ☆☆
         type = 'weapon',
-        name = 'AK-47 Pistol',
+        name = 'Pistol',
         weight = 0.5
     },
     ['weapon_assaultsmg'] = { -- ☆☆☆☆☆

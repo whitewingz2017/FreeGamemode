@@ -20,7 +20,10 @@ CK-Framework has its own [Official Discord](https://discord.io/ckframework).
 
 ### If you need any support, or anything, visit our discord, there we will be dealing with everything about this framework!
 
+
 ### Documentation: https://ycr4zy.github.io/CK-Framework/index.html
+
+### Now support multi-language in UI and Game
 
 ### Credits:
   - yCr4zY#2802 ( Developer from CK Framework )

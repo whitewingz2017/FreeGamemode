@@ -66,6 +66,18 @@ function API.Character(id, charName, level, xp, groups, inventory)
         return self.charName
     end
 
+    self.getMoney = function()
+        return self.Inventory:getItemAmount("generic_money")
+    end
+
+    self.addMoney = function(this, money)
+        return self.Inventory:addItem("generic_money", parseInt(money))
+    end
+
+    self.removeMoney = function(this, money)
+        return self.Inventory:removeItem("generic_money", parseInt(money))
+    end
+
     self.getLevel = function()
         return self.level
     end
