@@ -172,27 +172,15 @@ BEGIN
 END//
 DELIMITER ;
 
--- Copiando estrutura para tabela CKF.whitelist
-CREATE TABLE IF NOT EXISTS `whitelist` (
-  `id` int(11) NOT NULL,
-  `identifier` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `identifier` (`identifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- Copiando estrutura para tabela CKF.users
-CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `banned` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`user_id`),
-  KEY `identifier` (`identifier`),
-  CONSTRAINT `FK_users_whitelist` FOREIGN KEY (`identifier`) REFERENCES `whitelist` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `users` (
+	`user_id` INT(11) NOT NULL AUTO_INCREMENT,
+	`identifier` VARCHAR(21) NOT NULL,
+	`name` VARCHAR(50) NOT NULL,
+	`banned` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`user_id`),
+	INDEX `identifier` (`identifier`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- Exportação de dados foi desmarcado.
-
 -- Exportação de dados foi desmarcado.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
